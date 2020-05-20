@@ -1,14 +1,15 @@
 package dao;
 
 import domain.Customer; 
+import javax.ejb.Stateless;
 
-@Stateles
+@Stateless
 @TestingDao
 public class CustomerDataAccessTesting implements CustomerDataAccess {
 	
 	@Override 
-	public void insert(Customer newCustomer) {
-		
+	public void add(Customer customer) {
+		return null;
 	}
 	
 	@Override
@@ -20,11 +21,16 @@ public class CustomerDataAccessTesting implements CustomerDataAccess {
 		customer.add(c1);
 		customer.add(c2); 
 		customer.add(c3); 
-
+		return null;
 	}
 	@Override
-	public List<Customer> findBySurname(String surname) {
+	public List<Customer> find(String surname) {
 		return null; 
+	}
+	
+	@Override
+	public Customer remove(Customer customer) {
+		return null;
 	}
 
 }
