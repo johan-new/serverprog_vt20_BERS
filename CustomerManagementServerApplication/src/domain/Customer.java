@@ -1,11 +1,16 @@
 package domain;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Customer implements Serializable {
 
-//	@Id 
-//	@GeneratedValue(strategy = GenerationType.AUTO); 
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO); 
 	private int id; 
 	private String firstname; 
 	private String surname; 
@@ -13,7 +18,7 @@ public class Customer implements Serializable {
 	private String address; 
 	private String customergroup; 
 	private String email; 
-	private String responsibleseller;
+	private String accountmanager;
 
 	
 	public Customer() {
@@ -21,17 +26,15 @@ public class Customer implements Serializable {
 	}
 
 
-	public Customer(int id, String firstname, String surname, String phone, String address, String customergroup,
-			String email, String responsibleseller) {
-		super();
-		this.id = id;
+	public Customer(String firstname, String surname, String phone, String address, String customergroup,
+			String email, String accountmanager) {
 		this.firstname = firstname;
 		this.surname = surname;
 		this.phone = phone;
 		this.address = address;
 		this.customergroup = customergroup;
 		this.email = email;
-		this.responsibleseller = responsibleseller;
+		this.accountmanager = accountmanager;
 	}
 
 
@@ -70,8 +73,8 @@ public class Customer implements Serializable {
 	}
 
 
-	public void Responsibleseller(String responsibleseller) {
-		this.responsibleseller = responsibleseller;
+	public void Accountmanager(String accountmanager) {
+		this.accountmanager = accountmanager;
 	}
 
 
@@ -79,7 +82,7 @@ public class Customer implements Serializable {
 	public String toString() {
 		return "Customer [id=" + id + ", firstname=" + firstname + ", surname=" + surname + ", phone=" + phone
 				+ ", address=" + address + ", customergroup=" + customergroup + ", email=" + email
-				+ ", responsibleseller=" + responsibleseller + "]";
+				+ ", accountmanager=" + accountmanager + "]";
 	}
 	
 	
