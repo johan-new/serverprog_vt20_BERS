@@ -6,7 +6,7 @@ import java.util.List;
 @Local
 public interface CustomerDataAccess {
     List<Customer> findAll();
-    Customer find(Customer customer);
+    List<Customer> find(String surname);
     Customer add(Customer customer);
     Customer remove(Customer customer);
 }
