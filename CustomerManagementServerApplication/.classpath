@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Ereko/Desktop/Skola/Serverprogrammering/modul-1/end-chapter-3-EJB/lib/jboss-javaee-all-7.0-1.0.3.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
