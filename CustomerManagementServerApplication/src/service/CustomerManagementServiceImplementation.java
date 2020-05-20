@@ -1,6 +1,11 @@
 package service;
+
 import CustomerManagementService;
 import dao.CustomerDataAccess;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 
 @Stateless
