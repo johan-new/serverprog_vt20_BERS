@@ -27,7 +27,7 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 	}
 
 	@Override
-	public Customer find(Customer customer) {
+	public List<Customer> find(String surname) {
 		Query q = em.createQuery("select customer from Customer customer where customer.id = :id");
 		q.setParameter("id", id);
 		return (Customer) q.getSingleResult();
