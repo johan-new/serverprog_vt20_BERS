@@ -1,5 +1,10 @@
 package service;
 
-public interface CustomerManagementService {
+import javax.ejb.Remote;
+
+import service.CustomerManagementServiceLocal;
+
+@Remote
+public interface CustomerManagementService extends CustomerManagementServiceLocal {
 
 }
