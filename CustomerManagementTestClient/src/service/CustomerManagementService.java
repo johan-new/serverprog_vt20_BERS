@@ -1,5 +1,16 @@
 package service;
 
-public interface CustomerManagementService extends CustomerManagementServiceLocal {
+import java.util.List;
 
+import domain.Customer;
+
+public interface CustomerManagementService {
+
+	public void registerCustomer(Customer customer);
+
+	public List<Customer> getAllCustomers();
+
+	public List<Customer> searchBySurname(String surname);
+
+	public Customer removeCustomer(int id);
 }

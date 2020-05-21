@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Customer implements java.io.Serializable {
 
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO); 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id; 
 	private String firstname; 
 	private String surname; 

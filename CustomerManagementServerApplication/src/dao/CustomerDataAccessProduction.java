@@ -28,22 +28,24 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 
 	@Override
 	public List<Customer> find(String surname) {
-		Query q = em.createQuery("select customer from Customer customer where customer.id = :id");
-		q.setParameter("id", id);
-		return (Customer) q.getSingleResult();
+		Query q = em.createQuery("select customer from Customer customer where customer.surname = :surname");
+		q.setParameter("surname", surname);
+		List<Customer> customers = q.getResultList();
+		return customers;
+		
 	}
-
+// RETURNERA ANNAT ÄN NULL HÄR? BEHÖVER VI ENS RETURN?
 	@Override
-	public void add(Customer customer) {
+	public Customer add(Customer customer) {
 		em.persist(customer);
-
+		return null;
 	}
-
 	@Override
-	public Customer remove(Customer customer) {
+	public Customer remove(int id) {
 		Query q = em.createQuery("delete customer from Customer customer where customer.id = :id");
 		q.setParameter("id", id);
-		return q.getSingleResult();
+		return (Customer)q.getSingleResult();
 	}
+
 
 }

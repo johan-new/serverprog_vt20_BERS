@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.naming.Context;
@@ -21,9 +22,12 @@ public class Main {
 		Context jndi = new InitialContext(jndiProperties);
 
 		// friendlyName MÅSTE fixas, men hittar ej i Wildfly :( /Erik
-		CustomerManagementService service = (CustomerManagementService) jndi.lookup("friendlyName");
+		CustomerManagementService service = (CustomerManagementService) jndi.lookup("CustomerManagementServerApplication/CustomerManagementServiceImplementation!service.CustomerManagementService");
 	
-	
+		List<Customer> customers = service.getAllCustomers();
+		for (Customer customer : customers) {
+			System.out.println(customer);
+		}
 	}
 
 }

@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 import dao.CustomerDataAccess;
+import domain.Customer;
+
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
@@ -14,7 +16,8 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
 
     @Inject
     private CustomerDataAccess dao;
-
+    
+ // ADD RETURN STATEMENT, BEÖHVER VI DET????
     @Override
     public List<Customer> getAllCustomers() {
         return dao.findAll();
@@ -29,10 +32,11 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     public void registerCustomer(Customer customer) throws ServiceUnavailableException {
         dao.add(customer);
     }
-
+// ADD RETURN STATEMENT, BEÖHVER VI DET????
     @Override
-    public Customer removeCustomer(Customer customer) {
-        dao.remove(customer);
+    public Customer removeCustomer(int id) {
+    	dao.remove(id);
+        return null;
     }
 
 }
