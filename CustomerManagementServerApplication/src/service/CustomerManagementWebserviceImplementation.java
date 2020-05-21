@@ -15,8 +15,8 @@ public class CustomerManagementWebserviceImplementation {
 	@Inject 
 	private CustomerManagementServiceLocal service; 
 	
-	public Customer getCustomerById(int id) {
-		return service.getById(id); 
+	public Customer getCustomerBySurname(String surname) {
+		return service.searchBySurname(surname); 
 }
 
 	public List<Customer>getAllCustomer() {
