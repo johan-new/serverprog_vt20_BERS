@@ -12,7 +12,7 @@ public interface CustomerManagementServiceLocal {
 
 	public List<Customer> getAllCustomer();
 
-	public List<Customer> searchBysurname(String surname);
+	public List<Customer> searchBySurname(String surname);
 
 	public Customer removeCustomer(Customer customer);
 }
