@@ -30,7 +30,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     }
 
     @Override
-    public removeCustomer(Customer customer) {
+    public Customer removeCustomer(Customer customer) {
         dao.remove(customer);
     }
 
