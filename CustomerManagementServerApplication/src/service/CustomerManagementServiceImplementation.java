@@ -1,38 +1,30 @@
 package service;
 
 import java.util.List;
-import dao.CustomerDataAccess;
-import javax.annotation.Resource;
-import javax.ejb.SessionContext;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import service.ServiceUnavailableException;
 
+import javax.ejb.Stateless;
+
+import domain.Customer;
 
 @Stateless
 public class CustomerManagementServiceImplementation implements CustomerManagementService {
 
-    @Inject
-    private CustomerDataAccess dao;
+	@Override
+	public void registerCustomers(Customer customer) {
+		// TODO Auto-generated method stub
 
-    @Override
-    public List<Customer> getAllCustomers() {
-        return dao.findAll();
-    }
+	}
 
-    @Override
-    public List<Customer> searchBySurname(String surname) {
-        return dao.find(surname);
-    }
+	@Override
+	public List<Customer> getAllCustomers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public void registerCustomer(Customer customer) throws ServiceUnavailableException {
-        dao.add(customer);
-    }
-
-    @Override
-    public Customer removeCustomer(Customer customer) {
-        dao.remove(customer);
-    }
+	@Override
+	public List<Customer> searchBysurname(String surname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
