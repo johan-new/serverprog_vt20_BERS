@@ -9,7 +9,7 @@
     <!-- OBS! ÄNDRA TILL DIN EGEN PATH I TAGGEN NEDAN -->
 	<property name="server-dist" value="/home/store/app/wildfly-19.0.0.Final/standalone/deployments"/>
 		
-	<property name="server-jarfile" value="${server-dist}/CustomerServerApplication.jar"/>
+	<property name="server-jarfile" value="${server-dist}/CustomerManagementServerApplication.jar"/>
     
     <path id="my.classpath">
         <pathelement path="${java.class.path}"/>
