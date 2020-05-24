@@ -9,13 +9,25 @@ import domain.Customer;
 @Remote
 public interface CustomerManagementService {
 
-	public void registerCustomer(Customer customer) throws ServiceUnavailableException;
+	void registerCustomer(Customer customer);
 
-	public List<Customer> getAllCustomers();
+	List<Customer> getAllCustomers();
 
-	public List<Customer> searchBySurname(String surname);
+	List<Customer> searchBySurname(String surname);
 
-	public void removeCustomer(int id);
+	void removeCustomer(int id);
 
 	Customer identifyCustomer(int id);
+
+	void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager);
+
+	void updatePhoneNr(int id, String newNr);
+
+	void updateAddress(int id, String newAddress);
+
+	void updateCustomergroup(int id, String newCustomergroup);
+
+	void updateEmail(int id, String newEmail);
+
+	void updateAccountmanager(int id, String newAccountManager);
 }

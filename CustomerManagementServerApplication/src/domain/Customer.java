@@ -26,8 +26,28 @@ public class Customer implements java.io.Serializable {
 	}
 
 
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setCustomergroup(String customergroup) {
+		this.customergroup = customergroup;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setAccountmanager(String accountmanager) {
+		this.accountmanager = accountmanager;
+	}
+
 	public Customer(String firstname, String surname, String phone, String address, String customergroup,
-			String email, String accountmanager) {
+					String email, String accountmanager) {
 		this.firstname = firstname;
 		this.surname = surname;
 		this.phone = phone;
@@ -43,40 +63,37 @@ public class Customer implements java.io.Serializable {
 	}
 
 
-	public void Firstname(String firstname) {
-		this.firstname = firstname;
+	public int getId() {
+		return id;
 	}
 
-
-	public void Surname(String surname) {
-		this.surname = surname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-
-	public void Phone(String phone) {
-		this.phone = phone;
+	public String getSurname() {
+		return surname;
 	}
 
-
-	public void Address(String address) {
-		this.address = address;
+	public String getPhone() {
+		return phone;
 	}
 
-
-	public void Customergroup(String customergroup) {
-		this.customergroup = customergroup;
+	public String getAddress() {
+		return address;
 	}
 
-
-	public void Email(String email) {
-		this.email = email;
+	public String getCustomergroup() {
+		return customergroup;
 	}
 
-
-	public void Accountmanager(String accountmanager) {
-		this.accountmanager = accountmanager;
+	public String getEmail() {
+		return email;
 	}
 
+	public String getAccountmanager() {
+		return accountmanager;
+	}
 
 	@Override
 	public String toString() {

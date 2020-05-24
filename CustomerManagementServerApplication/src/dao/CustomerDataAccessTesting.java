@@ -37,7 +37,15 @@ public class CustomerDataAccessTesting implements CustomerDataAccess {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) {
 
+	}
+
+	@Override
+	public Customer getById(int id) {
+		return null;
+	}
 
 
 }

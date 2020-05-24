@@ -45,5 +45,38 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 		em.remove(customer);
 	}
 
+	private String phone;
+	private String address;
+	private String customergroup;
+	private String email;
+	private String accountmanager;
+
+	@Override
+	public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) {
+		Customer c = getById(id);
+
+		if (newPhone != null)
+			c.setPhone(newPhone);
+
+		if (newAddress != null)
+			c.setAddress(newAddress);
+
+		if (newCustomergroup != null)
+			c.setCustomergroup(newCustomergroup);
+
+		if (newEmail != null)
+			c.setEmail(newEmail);
+
+		if (newAccountmanager != null)
+			c.setAccountmanager(newAccountmanager);
+	}
+
+	@Override
+	public Customer getById(int id) {
+		Query q = em.createQuery("select customer from Customer customer where customer.id = :id");
+		q.setParameter("id", id);
+		return (Customer)q.getSingleResult();
+
+	}
 
 }

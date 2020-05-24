@@ -29,7 +29,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     }
 
     @Override
-    public void registerCustomer(Customer customer) throws ServiceUnavailableException {
+    public void registerCustomer(Customer customer) {
         dao.add(customer);
     }
 // ADD RETURN STATEMENT, BE�HVER VI DET????
@@ -49,6 +49,36 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
         }
 
         return null; //no hit
+    }
+
+    @Override
+    public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager){
+        dao.updateCustomer(id,newPhone,newAddress,newCustomergroup,newEmail,newAccountmanager);
+    }
+
+    @Override
+    public void updatePhoneNr(int id, String newNr) {
+        dao.updateCustomer(id, newNr,null,null,null,null);
+    }
+
+    @Override
+    public void updateAddress(int id, String newAddress) {
+        dao.updateCustomer(id, null,newAddress,null,null,null);
+    }
+
+    @Override
+    public void updateCustomergroup(int id, String newCustomergroup) {
+        dao.updateCustomer(id, null,null,newCustomergroup,null,null);
+    }
+
+    @Override
+    public void updateEmail(int id, String newEmail) {
+        dao.updateCustomer(id, null,null,null,newEmail,null);
+    }
+
+    @Override
+    public void updateAccountmanager(int id, String newAccountManager) {
+        dao.updateCustomer(id, null,null,null,null,newAccountManager);
     }
 
 }
