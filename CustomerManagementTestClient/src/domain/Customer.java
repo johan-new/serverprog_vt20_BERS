@@ -31,8 +31,8 @@ public class Customer implements java.io.Serializable {
 	}
 
 
-	public void Id(int id) {
-		this.id = id;
+	public int id() {
+		return this.id;
 	}
 
 

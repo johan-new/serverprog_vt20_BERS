@@ -21,13 +21,20 @@ public class Main {
 
 		Context jndi = new InitialContext(jndiProperties);
 
-		// friendlyName MÅSTE fixas, men hittar ej i Wildfly :( /Erik
+		// friendlyName MSTE fixas, men hittar ej i Wildfly :( /Erik
 		CustomerManagementService service = (CustomerManagementService) jndi.lookup("CustomerManagementServerApplication/CustomerManagementServiceImplementation!service.CustomerManagementService");
-	
+
+		service.registerCustomer(new Customer("Bosse","Bildoktorn","07622222","Kundsgatan 1","Prospects","bosse@mail.com","Hasse Andersson"));
+		service.registerCustomer(new Customer("Doktor","Åsa","076111111","Kundsgatan 2","Prospects","aasa@mail.com","Hasse Andersson"));
+
 		List<Customer> customers = service.getAllCustomers();
 		for (Customer customer : customers) {
 			System.out.println(customer);
 		}
+
+		//service.removeCustomer( 102);
+
+
 	}
 
 }
