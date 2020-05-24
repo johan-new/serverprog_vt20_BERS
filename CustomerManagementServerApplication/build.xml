@@ -7,16 +7,10 @@
     <property name="lib" value="./lib"/>
     <property name="src" value="./src"/> 
     <!-- OBS! ÄNDRA TILL DIN EGEN PATH I TAGGEN NEDAN -->
-<<<<<<< HEAD
-<!--	<property name="server-dist" value="/home/store/app/wildfly-19.0.0.Final/standalone/deployments"/> -->
-	<property name="server-dist" value="C:\Program Files\wildfly-19.0.0.Final\standalone\deployments"/>
-	
-	<property name="server-jarfile" value="${server-dist}/CustomerServerApplication.jar"/>
-=======
+
 	<property name="server-dist" value="/home/store/app/wildfly-19.0.0.Final/standalone/deployments"/>
 		
 	<property name="server-jarfile" value="${server-dist}/CustomerManagementServerApplication.jar"/>
->>>>>>> 8b8a167637c5c8846f125db03310b81c59c41290
     
     <path id="my.classpath">
         <pathelement path="${java.class.path}"/>
