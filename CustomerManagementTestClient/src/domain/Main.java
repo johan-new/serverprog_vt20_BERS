@@ -24,15 +24,22 @@ public class Main {
 		// friendlyName MSTE fixas, men hittar ej i Wildfly :( /Erik
 		CustomerManagementService service = (CustomerManagementService) jndi.lookup("CustomerManagementServerApplication/CustomerManagementServiceImplementation!service.CustomerManagementService");
 
-		service.registerCustomer(new Customer("Bosse","Bildoktorn","07622222","Kundsgatan 1","Prospects","bosse@mail.com","Hasse Andersson"));
-		service.registerCustomer(new Customer("Doktor","Åsa","076111111","Kundsgatan 2","Prospects","aasa@mail.com","Hasse Andersson"));
+
+		//service.removeCustomer( 102);
+
+		//Customer aasa = service.identifyCustomer(106);
+		//service.updateCustomer(106,"112",aasa.getAddress(),aasa.getCustomergroup(),aasa.getEmail(),aasa.getAccountmanager());
+
+		service.updatePhoneNr(106,"0");
+		service.updateAccountmanager(106,"Percy Nilegård");
+		service.updateAddress(106,"Testgatan 1337");
+		service.updateEmail(106,"dr_haxx@gmail.com");
 
 		List<Customer> customers = service.getAllCustomers();
+
 		for (Customer customer : customers) {
 			System.out.println(customer);
 		}
-
-		//service.removeCustomer( 102);
 
 
 	}
