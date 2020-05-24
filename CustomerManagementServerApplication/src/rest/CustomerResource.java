@@ -21,6 +21,7 @@ public class CustomerResource {
 	@GET
 	@Produces("application/XML")
 	public List<Customer> getAllCustomers() {
+		System.out.println("yo");
 		return service.getAllCustomers();
 	}
 }

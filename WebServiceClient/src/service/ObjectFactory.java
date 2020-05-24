@@ -38,6 +38,7 @@ public class ObjectFactory {
     private final static QName _RemoveCustomerResponse_QNAME = new QName("http://service/", "removeCustomerResponse");
     private final static QName _UpdateAccountManagerResponse_QNAME = new QName("http://service/", "updateAccountManagerResponse");
     private final static QName _IdentifyCustomer_QNAME = new QName("http://service/", "identifyCustomer");
+    private final static QName _Customer_QNAME = new QName("http://service/", "customer");
     private final static QName _SearchBySurnameResponse_QNAME = new QName("http://service/", "searchBySurnameResponse");
     private final static QName _UpdateCustomergroup_QNAME = new QName("http://service/", "updateCustomergroup");
     private final static QName _UpdatePhoneNr_QNAME = new QName("http://service/", "updatePhoneNr");
@@ -215,6 +216,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Customer }
+     * 
+     */
+    public Customer createCustomer() {
+        return new Customer();
+    }
+
+    /**
      * Create an instance of {@link SearchBySurnameResponse }
      * 
      */
@@ -228,14 +237,6 @@ public class ObjectFactory {
      */
     public UpdateCustomergroup createUpdateCustomergroup() {
         return new UpdateCustomergroup();
-    }
-
-    /**
-     * Create an instance of {@link Customer }
-     * 
-     */
-    public Customer createCustomer() {
-        return new Customer();
     }
 
     /**
@@ -362,6 +363,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://service/", name = "identifyCustomer")
     public JAXBElement<IdentifyCustomer> createIdentifyCustomer(IdentifyCustomer value) {
         return new JAXBElement<IdentifyCustomer>(_IdentifyCustomer_QNAME, IdentifyCustomer.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Customer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service/", name = "customer")
+    public JAXBElement<Customer> createCustomer(Customer value) {
+        return new JAXBElement<Customer>(_Customer_QNAME, Customer.class, null, value);
     }
 
     /**
