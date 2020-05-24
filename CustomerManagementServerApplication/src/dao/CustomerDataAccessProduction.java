@@ -34,17 +34,15 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 		return customers;
 		
 	}
-// RETURNERA ANNAT ÄN NULL HÄR? BEHÖVER VI ENS RETURN?
+// RETURNERA ANNAT ï¿½N NULL Hï¿½R? BEHï¿½VER VI ENS RETURN?
 	@Override
 	public Customer add(Customer customer) {
 		em.persist(customer);
 		return null;
 	}
 	@Override
-	public Customer remove(int id) {
-		Query q = em.createQuery("delete customer from Customer customer where customer.id = :id");
-		q.setParameter("id", id);
-		return (Customer)q.getSingleResult();
+	public void remove(Customer customer) {
+		em.remove(customer);
 	}
 
 

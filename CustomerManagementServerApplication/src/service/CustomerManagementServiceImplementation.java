@@ -17,7 +17,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     @Inject
     private CustomerDataAccess dao;
     
- // ADD RETURN STATEMENT, BEÖHVER VI DET????
+ // ADD RETURN STATEMENT, BEï¿½HVER VI DET????
     @Override
     public List<Customer> getAllCustomers() {
         return dao.findAll();
@@ -32,11 +32,23 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     public void registerCustomer(Customer customer) throws ServiceUnavailableException {
         dao.add(customer);
     }
-// ADD RETURN STATEMENT, BEÖHVER VI DET????
+// ADD RETURN STATEMENT, BEï¿½HVER VI DET????
     @Override
-    public Customer removeCustomer(int id) {
-    	dao.remove(id);
-        return null;
+    public void removeCustomer(int id) {
+    	dao.remove(identifyCustomer(id));
+    }
+
+    @Override
+    public Customer identifyCustomer(int id) {
+        List<Customer> allCustomers = getAllCustomers();
+
+        for (int i = 0; i < allCustomers.size(); i++) {
+            if (id == allCustomers.get(i).id() ) {
+                return allCustomers.get(i); // search hit
+            }
+        }
+
+        return null; //no hit
     }
 
 }

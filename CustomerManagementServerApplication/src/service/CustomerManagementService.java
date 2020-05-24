@@ -15,5 +15,7 @@ public interface CustomerManagementService {
 
 	public List<Customer> searchBySurname(String surname);
 
-	public Customer removeCustomer(int id);
+	public void removeCustomer(int id);
+
+	Customer identifyCustomer(int id);
 }
