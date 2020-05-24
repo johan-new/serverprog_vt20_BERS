@@ -12,7 +12,7 @@ import service.ServiceUnavailableException;
 
 
 @Stateless
-public class CustomerManagementServiceImplementation implements CustomerManagementService {
+public class CustomerManagementServiceImplementation implements CustomerManagementService, CustomerManagementServiceLocal {
 
     @Inject
     private CustomerDataAccess dao;
