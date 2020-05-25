@@ -18,6 +18,9 @@ public class Customer implements java.io.Serializable {
 	}
 
 	// required by WildFly, not used
+	public void setId(int id) {	this.id = id; }
+
+	// required by WildFly, not used
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
