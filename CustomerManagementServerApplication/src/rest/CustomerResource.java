@@ -28,7 +28,7 @@ public class CustomerResource {
 	@GET
 	@Produces("application/XML")
 	@Path("{customerSurname}")
-	public Customer findEmployeeById(@PathParam("customerSurname") String surname) {
-		return (Customer) service.searchBySurname(surname);
+	public List<Customer> findEmployeeById(@PathParam("customerSurname") String surname) {
+		return service.searchBySurname(surname);
 	}
 }
