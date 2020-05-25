@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -28,7 +29,13 @@ public class CustomerResource {
 	@GET
 	@Produces("application/XML")
 	@Path("{customerSurname}")
-	public Customer findEmployeeById(@PathParam("customerSurname") String surname) {
+	public Customer searchBySurname(@PathParam("customerSurname") String surname) {
 		return (Customer) service.searchBySurname(surname);
+	}
+	
+	@POST
+	@Path("/registerCustomer")
+	public void registerCustomer(Customer customer) {
+		
 	}
 }
