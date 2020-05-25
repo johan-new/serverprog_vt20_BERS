@@ -4,14 +4,11 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 import domain.Customer;
 import service.CustomerManagementServiceLocal;
+import service.ServiceUnavailableException;
 
 @Stateless
 @Path("/customers")
@@ -35,8 +32,15 @@ public class CustomerResource {
 	}
 	
 	@POST
-	@Path("/registerCustomer")
-	public void registerCustomer(Customer customer) {
-		
+	@Produces("application/XML")
+	@Consumes("application/XML")
+	public Customer registerCustomer(Customer customer) {
+		//try {
+			service.registerCustomer(customer);
+		//} catch (ServiceUnavailableException e) {
+
+		//}
+
+		return customer;
 	}
 }
