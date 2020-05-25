@@ -31,6 +31,7 @@ public class CustomerResource {
 	@Path("{customerSurname}")
 	public Customer searchBySurname(@PathParam("customerSurname") String surname) {
 		return (Customer) service.searchBySurname(surname);
+
 	}
 	
 	@POST
