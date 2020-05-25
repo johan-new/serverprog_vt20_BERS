@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import dao.CustomerNotFoundException;
 import domain.Customer;
 import service.CustomerManagementServiceLocal;
 import service.ServiceUnavailableException;
@@ -31,6 +32,20 @@ public class CustomerResource {
 		return service.searchBySurname(surname);
 
 	}
+
+	@GET
+	@Produces("application/XML")
+	@Path("/id/{idParameter}")
+	public Customer getById(@PathParam("idParameter") int id) {
+		Customer returnCustomer = new Customer();
+		try {
+			returnCustomer = service.identifyCustomer(id);
+		} catch (CustomerNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return returnCustomer;
+	}
 	
 	@POST
 	@Produces("application/XML")
@@ -38,10 +53,11 @@ public class CustomerResource {
 	public Response registerCustomer(Customer customer) {
 		try {
 			service.registerCustomer(customer);
+			//int newId = service.
 			return Response.status(201).build(); //HTTP code created
 		} catch (ServiceUnavailableException e) {
-			//FIXA SEN
+			return Response.status(504).build();
 		}
-		return Response.status(404).build();
+		//return Response.status(404).build();
 	}
 }
