@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -52,7 +53,7 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 	private String accountmanager;
 
 	@Override
-	public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) {
+	public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) throws CustomerNotFoundException {
 		Customer c = getById(id);
 
 		if (newPhone != null)
@@ -72,11 +73,14 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 	}
 
 	@Override
-	public Customer getById(int id) {
+	public Customer getById(int id) throws CustomerNotFoundException{
+		try {
 		Query q = em.createQuery("select customer from Customer customer where customer.id = :id");
 		q.setParameter("id", id);
 		return (Customer)q.getSingleResult();
-
+		} catch (NoResultException e) {
+			throw new CustomerNotFoundException();
+		}
 	}
 
 }

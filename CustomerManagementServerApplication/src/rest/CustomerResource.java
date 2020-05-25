@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 import domain.Customer;
 import service.CustomerManagementServiceLocal;
@@ -34,13 +35,13 @@ public class CustomerResource {
 	@POST
 	@Produces("application/XML")
 	@Consumes("application/XML")
-	public Customer registerCustomer(Customer customer) {
-		//try {
+	public Response registerCustomer(Customer customer) {
+		try {
 			service.registerCustomer(customer);
-		//} catch (ServiceUnavailableException e) {
-
-		//}
-
-		return customer;
+			return Response.status(201).build(); //HTTP code created
+		} catch (ServiceUnavailableException e) {
+			//FIXA SEN
+		}
+		return Response.status(404).build();
 	}
 }

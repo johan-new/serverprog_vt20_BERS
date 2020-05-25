@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import dao.CustomerDataAccess;
+import dao.CustomerNotFoundException;
 import domain.Customer;
 
 import javax.annotation.Resource;
@@ -32,52 +33,44 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     public void registerCustomer(Customer customer) {
         dao.add(customer);
     }
-// ADD RETURN STATEMENT, BE�HVER VI DET????
+
     @Override
-    public void removeCustomer(int id) {
+    public void removeCustomer(int id) throws CustomerNotFoundException {
     	dao.remove(identifyCustomer(id));
     }
 
     @Override
-    public Customer identifyCustomer(int id) {
-        List<Customer> allCustomers = getAllCustomers();
-
-        for (int i = 0; i < allCustomers.size(); i++) {
-            if (id == allCustomers.get(i).id() ) {
-                return allCustomers.get(i); // search hit
-            }
-        }
-
-        return null; //no hit
+    public Customer identifyCustomer(int id) throws CustomerNotFoundException {
+        return dao.getById(id);
     }
 
     @Override
-    public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager){
+    public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) throws CustomerNotFoundException {
         dao.updateCustomer(id,newPhone,newAddress,newCustomergroup,newEmail,newAccountmanager);
     }
 
     @Override
-    public void updatePhoneNr(int id, String newNr) {
+    public void updatePhoneNr(int id, String newNr) throws CustomerNotFoundException {
         dao.updateCustomer(id, newNr,null,null,null,null);
     }
 
     @Override
-    public void updateAddress(int id, String newAddress) {
+    public void updateAddress(int id, String newAddress) throws CustomerNotFoundException {
         dao.updateCustomer(id, null,newAddress,null,null,null);
     }
 
     @Override
-    public void updateCustomergroup(int id, String newCustomergroup) {
+    public void updateCustomergroup(int id, String newCustomergroup) throws CustomerNotFoundException {
         dao.updateCustomer(id, null,null,newCustomergroup,null,null);
     }
 
     @Override
-    public void updateEmail(int id, String newEmail) {
+    public void updateEmail(int id, String newEmail) throws CustomerNotFoundException {
         dao.updateCustomer(id, null,null,null,newEmail,null);
     }
 
     @Override
-    public void updateAccountmanager(int id, String newAccountManager) {
+    public void updateAccountmanager(int id, String newAccountManager) throws CustomerNotFoundException {
         dao.updateCustomer(id, null,null,null,null,newAccountManager);
     }
 
