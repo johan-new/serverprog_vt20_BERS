@@ -36,7 +36,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
 
     @Override
     public void removeCustomer(int id) throws CustomerNotFoundException {
-    	dao.remove(identifyCustomer(id));
+    	dao.remove(id);
     }
 
     @Override

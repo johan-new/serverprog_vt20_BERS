@@ -42,8 +42,9 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 		return null;
 	}
 	@Override
-	public void remove(Customer customer) {
-		em.remove(customer);
+	public void remove(int id) throws CustomerNotFoundException {
+		Customer c = getById(id);
+		em.remove(c);
 	}
 
 	private String phone;

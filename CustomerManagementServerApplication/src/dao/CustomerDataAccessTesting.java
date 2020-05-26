@@ -33,7 +33,7 @@ public class CustomerDataAccessTesting implements CustomerDataAccess {
 	}
 
 	@Override
-	public void remove(Customer customer) {
+	public void remove(int id) {
 		// TODO Auto-generated method stub
 	}
 
