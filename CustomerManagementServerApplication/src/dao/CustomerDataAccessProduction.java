@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import domain.Customer;
+import service.ServiceUnavailableException;
 
 @Stateless
 @Default
@@ -35,11 +36,15 @@ public class CustomerDataAccessProduction implements CustomerDataAccess {
 		return customers;
 		
 	}
-// RETURNERA ANNAT �N NULL H�R? BEH�VER VI ENS RETURN?
+
 	@Override
-	public Customer add(Customer customer) {
-		em.persist(customer);
-		return null;
+	public void add(Customer customer) throws DatabaseErrorException{
+		try {
+			em.persist(customer);
+		} catch (Exception e) {
+			throw new DatabaseErrorException("Customer not added\n" + e.getMessage());
+		}
+
 	}
 	@Override
 	public void remove(int id) throws CustomerNotFoundException {

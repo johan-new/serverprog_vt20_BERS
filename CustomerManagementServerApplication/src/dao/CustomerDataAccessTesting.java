@@ -12,8 +12,8 @@ import javax.ejb.Stateless;
 public class CustomerDataAccessTesting implements CustomerDataAccess {
 	
 	@Override 
-	public Customer add(Customer customer) {
-		return null;
+	public void add(Customer customer) throws DatabaseErrorException{
+
 	}
 	
 	@Override

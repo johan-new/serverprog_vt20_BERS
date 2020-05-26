@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import dao.CustomerDataAccess;
 import dao.CustomerNotFoundException;
+import dao.DatabaseErrorException;
 import domain.Customer;
 
 import javax.annotation.Resource;
@@ -30,8 +31,13 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     }
 
     @Override
-    public void registerCustomer(Customer customer) {
-        dao.add(customer);
+    public void registerCustomer(Customer customer) throws ServiceUnavailableException {
+        try {
+            dao.add(customer);
+        } catch (DatabaseErrorException e) {
+            throw new ServiceUnavailableException(e.getMessage());
+        }
+
     }
 
     @Override

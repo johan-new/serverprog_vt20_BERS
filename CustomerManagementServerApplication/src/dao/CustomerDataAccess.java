@@ -10,7 +10,7 @@ import java.util.List;
 public interface CustomerDataAccess {
     List<Customer> findAll();
     List<Customer> find(String surname);
-    Customer add(Customer customer);
+    void add(Customer customer) throws DatabaseErrorException;
     void remove(int id) throws CustomerNotFoundException;
     void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) throws CustomerNotFoundException;
     Customer getById(int id) throws CustomerNotFoundException;
