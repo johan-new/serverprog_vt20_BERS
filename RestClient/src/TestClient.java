@@ -45,6 +45,7 @@ public class TestClient {
 		System.out.println(response.getHeaders().toString());
 		System.out.println("Status code" + response.getStatus());
 		System.out.println(response.readEntity(String.class));
+
 		response.close();
 
 //		Customer exampleCustomer = new Customer("Luggis","B","08-585888",
