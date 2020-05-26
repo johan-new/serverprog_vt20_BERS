@@ -3,14 +3,11 @@ package service;
 import java.util.List;
 import dao.CustomerDataAccess;
 import dao.CustomerNotFoundException;
-import dao.DatabaseErrorException;
+import dao.CustomerNotCreatedException;
 import domain.Customer;
 
-import javax.annotation.Resource;
-import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import service.ServiceUnavailableException;
 
 
 @Stateless
@@ -34,7 +31,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     public void registerCustomer(Customer customer) throws ServiceUnavailableException {
         try {
             dao.add(customer);
-        } catch (DatabaseErrorException e) {
+        } catch (CustomerNotCreatedException e) {
             throw new ServiceUnavailableException(e.getMessage());
         }
 

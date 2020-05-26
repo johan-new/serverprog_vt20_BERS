@@ -36,14 +36,16 @@ public class CustomerResource {
 
 	}
 
-	@GET    //TODO
+	@GET //FIX LATER @HANDLEDNING
 	@Produces("application/XML")
 	@Path("/id/{idParameter}")
 	public Response getById(@PathParam("idParameter") int id) {
 		Customer returnCustomer;
 		try {
 			returnCustomer = service.identifyCustomer(id);
+			Link directURI = Link.fromUri("/customers/" + id).rel("self").type("get").build();
 
+			//return Response(returnCustomer).links(directURI).build();
 			return Response.status(200).build(); //OK code created
 		} catch (CustomerNotFoundException e) {
 			e.printStackTrace();

@@ -12,7 +12,7 @@ import javax.ejb.Stateless;
 public class CustomerDataAccessTesting implements CustomerDataAccess {
 	
 	@Override 
-	public void add(Customer customer) throws DatabaseErrorException{
+	public void add(Customer customer) throws CustomerNotCreatedException {
 
 	}
 	
