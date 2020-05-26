@@ -31,15 +31,15 @@ public class TestClient {
 
 
 
-		Customer exampleCustomer = new Customer("Luggis","B","08-585888",
+		Customer exampleCustomer = new Customer("Eriko","Simone","08-585888",
 								"Stigen 1, Stockholm","After sales","gugge@lindab.com",
 					"Bubbe");
 		Entity customerEntity = Entity.entity(exampleCustomer, "application/XML");
 		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers").request().buildPost(customerEntity).invoke();
-		if (response.getStatus() == 201)
-		{
-			System.out.println("CREATED: " + exampleCustomer.toString());
-		}
+
+		System.out.println(response.getHeaders().toString());
+		System.out.println("Status code" + response.getStatus());
+
 		response.close();
 
 

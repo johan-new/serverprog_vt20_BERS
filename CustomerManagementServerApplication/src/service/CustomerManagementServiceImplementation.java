@@ -44,6 +44,22 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
         return dao.getById(id);
     }
 
+    @Override //    NEW COMPARING IMPLEMENTATION AT CUSTOMER OBJECT MIGHT BE REQUIRED
+    public int identifyCustomer(Customer customer) throws CustomerNotFoundException {
+
+        List<Customer> allCustomers = getAllCustomers();
+
+        for (Customer c : allCustomers ) {
+            if (customer.equals(c))      {
+                return c.getId();
+            }      else {
+                throw new CustomerNotFoundException();
+            }
+        }
+
+        return -1;
+    }
+
     @Override
     public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) throws CustomerNotFoundException {
         dao.updateCustomer(id,newPhone,newAddress,newCustomergroup,newEmail,newAccountmanager);

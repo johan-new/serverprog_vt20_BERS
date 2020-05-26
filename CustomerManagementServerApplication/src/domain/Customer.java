@@ -115,6 +115,12 @@ public class Customer implements java.io.Serializable {
 				+ ", address=" + address + ", customergroup=" + customergroup + ", email=" + email
 				+ ", accountmanager=" + accountmanager + "]";
 	}
-	
-	
+
+	/*@Override
+	public boolean equals(Object obj) {
+		Customer c = (Customer)obj;
+
+		if (this.firstname.equals(c.firstname) && this.s.equals(c.firstname))
+
+	}*/
 }

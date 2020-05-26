@@ -20,6 +20,8 @@ public interface CustomerManagementServiceLocal {
 
 	Customer identifyCustomer(int id) throws CustomerNotFoundException;
 
+	int identifyCustomer(Customer customer) throws CustomerNotFoundException;
+
 	void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) throws CustomerNotFoundException ;
 
 	void updatePhoneNr(int id, String newNr) throws CustomerNotFoundException ;

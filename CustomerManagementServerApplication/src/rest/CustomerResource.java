@@ -1,5 +1,7 @@
 package rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -33,31 +35,31 @@ public class CustomerResource {
 
 	}
 
-	@GET
+	@GET    //TODO
 	@Produces("application/XML")
 	@Path("/id/{idParameter}")
-	public Customer getById(@PathParam("idParameter") int id) {
-		Customer returnCustomer = new Customer();
+	public Response getById(@PathParam("idParameter") int id) {
+		Customer returnCustomer;
 		try {
 			returnCustomer = service.identifyCustomer(id);
+
+			return Response.status(200).build(); //OK code created
 		} catch (CustomerNotFoundException e) {
 			e.printStackTrace();
+			return Response.status(404).build(); //Not found code created
 		}
-
-		return returnCustomer;
 	}
 	
 	@POST
 	@Produces("application/XML")
 	@Consumes("application/XML")
-	public Response registerCustomer(Customer customer) {
+	public Response registerCustomer(Customer customer)  {
 		try {
 			service.registerCustomer(customer);
-			//int newId = service.
 			return Response.status(201).build(); //HTTP code created
-		} catch (ServiceUnavailableException e) {
+		} catch (ServiceUnavailableException serviceUnavailableException) {
+			serviceUnavailableException.printStackTrace();
 			return Response.status(504).build();
 		}
-		//return Response.status(404).build();
 	}
 }
