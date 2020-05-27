@@ -18,34 +18,26 @@ import service.CustomerManagementServiceLocal;
 import service.ServiceUnavailableException;
 
 /**
- * <h2>REST API Resource class</h2> </ br>
- * Handling endpoints </ br>
- * <p>
+ * <h2>REST API Resource class</h2> <br>
+ * Handling endpoints <br>
  * <h3>GET</h3>
  * <ul>
  *     <li>"/" - gets all customers</li>
  *     <li>"/AnyGivenSurname - gets all customers with matching surname "AnyGivenSurname"</li>
- *     <li>"/id/7 - get customer with id 7<</li>
+ *     <li>"/id/7 - get customer with id 7</li>
  * </ul>
- * </p>
- * <p>
  * <h3>POST</h3>
  * <ul>
  *     <li>"/" - registers a customer</li>
  * </ul>
- * </p>
- * <p>
  * <h3>DELETE</h3>
  * <ul>
  *     <li>"/" - deletes a customer</li>
  * </ul>
- * </p>
- * <p>
  * <h3>PUT</h3>
  * <ul>
  *     <li>"/" - alters a customers data (NOT NAME)</li>
  * </ul>
- * </p>
  *
  * @version 1.0
  * @author Erik Manfredsson, Simon Södergren, Johan Nyberg
