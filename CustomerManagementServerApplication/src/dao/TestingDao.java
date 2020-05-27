@@ -9,9 +9,7 @@ import javax.inject.Qualifier;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.TYPE, ElementType.PARAMETER, ElementType.METHOD })
-
 @Qualifier
-
 public @interface TestingDao {
 
 }

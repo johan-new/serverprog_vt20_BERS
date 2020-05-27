@@ -22,29 +22,29 @@ import service.ServiceUnavailableException;
  * Handling endpoints </ br>
  * <p>
  * <h3>GET</h3>
- * <li>
- *     <ul>"/" - gets all customers</ul>
- *     <ul>"/AnyGivenSurname - gets all customers with matching surname "AnyGivenSurname"</ul>
- *     <ul>"/id/7 - get customer with id 7<</ul>
- * </li>
+ * <ul>
+ *     <li>"/" - gets all customers</li>
+ *     <li>"/AnyGivenSurname - gets all customers with matching surname "AnyGivenSurname"</li>
+ *     <li>"/id/7 - get customer with id 7<</li>
+ * </ul>
  * </p>
  * <p>
  * <h3>POST</h3>
- * <li>
- *     <ul>"/" - registers a customer</ul>
- * </li>
+ * <ul>
+ *     <li>"/" - registers a customer</li>
+ * </ul>
  * </p>
  * <p>
  * <h3>DELETE</h3>
- * <li>
- *     <ul>"/" - deletes a customer</ul>
- * </li>
+ * <ul>
+ *     <li>"/" - deletes a customer</li>
+ * </ul>
  * </p>
  * <p>
  * <h3>PUT</h3>
- * <li>
- *     <ul>"/" - alters a customers data (NOT NAME)</ul>
- * </li>
+ * <ul>
+ *     <li>"/" - alters a customers data (NOT NAME)</li>
+ * </ul>
  * </p>
  *
  * @version 1.0
