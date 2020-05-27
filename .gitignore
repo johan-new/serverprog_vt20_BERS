@@ -1,5 +1,7 @@
 #REMOVE AND COMMIT BEFORE DEADLINE!!! //JOHAN
 build.xml
+# Javadoc
+doc/
 
 # Compiled class file
 *.class
