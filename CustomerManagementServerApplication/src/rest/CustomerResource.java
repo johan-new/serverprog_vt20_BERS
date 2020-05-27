@@ -51,7 +51,7 @@ public class CustomerResource {
 	private CustomerManagementServiceLocal service;
 
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces("application/JSON")
 	public Response getAllCustomers() {
 		try {
 			//List<Customer> customers = service.getAllCustomers();
@@ -63,7 +63,7 @@ public class CustomerResource {
 	}
 
 	@GET
-	@Produces("application/XML")
+	@Produces("application/JSON")
 	@Path("{customerSurname}")
 	public Response searchBySurname(@PathParam("customerSurname") String surname) {
 		try {

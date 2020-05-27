@@ -18,7 +18,6 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     @Inject
     private CustomerDataAccess dao;
     
- // ADD RETURN STATEMENT, BE�HVER VI DET????
     @Override
     public List<Customer> getAllCustomers() throws CannotReadDatabaseException {
         return dao.findAll();
