@@ -1,0 +1,102 @@
+<project name="JavaEE Wildfly Server Build" default="BuildAll">
+
+	<property name="bin" value="./bin" />
+	<property name="lib" value="./lib" />
+	<property name="src" value="./src" />
+	<property name="doc.dir" location="./doc" />
+	<property name="client-dist" value="./dist" />
+	<property name="excludedPackages" value="org.codehaus.*,javax.mail.*" />
+
+	<!-- VÄLJ SÖKVÄG NEDANFÖR BEROENDE PÅ OPERATIVSYSTEM -->
+
+	<!-- WINDOWS -->
+	<property name="server-dist" value="C:\Program Files\wildfly-19.0.0.Final\standalone\deployments" />
+
+	<!-- LINUX/MAC OS -->
+	<!-- <property name="server-dist" value="/home/store/app/wildfly-19.0.0.Final/standalone/deployments"/> -->
+
+	<property name="server-jarfile" value="${server-dist}/CustomerManagementServerApplication.jar" />
+	<property name="warfile" value="${server-dist}/CustomerManagement.war" />
+
+	<path id="my.classpath">
+		<pathelement path="${java.class.path}" />
+		<pathelement location="${bin}" />
+
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+
+	</path>
+	<target name="BuildAll" depends="clean, prep, compile, serverjar, war" description="Complete rebuild.">
+		<echo message="Build complete." />
+	</target>
+
+	<target name="classpath">
+		<property name="current.classpath" refid="my.classpath" />
+
+		<echo level="info">
+			   Classpath is :
+			      ${current.classpath}
+			   </echo>
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+		<delete dir="${doc.dir}" />
+	</target>
+
+	<target name="prep">
+		<mkdir dir="${bin}" />
+		<mkdir dir="${doc.dir}" />
+	</target>
+
+	<target name="compile" description="Compile all Java classes" depends="prep">
+
+		<javac srcdir="${src}" destdir="${bin}" debug="true" encoding="ISO-8859-1">
+			<classpath refid="my.classpath" />
+
+		</javac>
+
+		<echo message="Compiled." />
+	</target>
+
+	<target name="serverjar" depends="compile" description="Build Server Jar files.">
+
+		<jar destfile="${server-jarfile}" basedir="${bin}">
+			<metainf dir="${src}/META-INF">
+				<include name="beans.xml" />
+				<include name="persistence.xml" />
+			</metainf>
+		</jar>
+		<echo message="Built the server jar file." />
+	</target>
+
+	<target name="war" depends="compile" description="Build War file.">
+		<copy todir="${bin}">
+			<fileset dir="${src}">
+				<include name="**/persistence.xml" />
+			</fileset>
+		</copy>
+
+		<war destfile="${warfile}" webxml="web.xml">
+			<classes dir="${bin}">
+			</classes>
+
+			<lib dir="${lib}" />
+
+		</war>
+
+		<echo message="Built the war file." />
+	</target>
+
+	<target name="doc" description="generate documentation">
+		<javadoc sourcepath="${src}" destdir="${doc.dir}" additionalparam="-Xdoclint:none" excludepackagenames="${excludedPackages}">
+			<classpath>
+				<fileset dir="lib">
+					<include name="jboss-javaee-all-7.0-1.0.3.Final.jar" />
+				</fileset>
+			</classpath>
+		</javadoc>
+		<echo message="Built javadoc" />
+	</target>
+</project>
