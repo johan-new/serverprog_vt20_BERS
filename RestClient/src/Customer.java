@@ -1,6 +1,4 @@
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
 public class Customer implements java.io.Serializable {
 
 	private int id; 

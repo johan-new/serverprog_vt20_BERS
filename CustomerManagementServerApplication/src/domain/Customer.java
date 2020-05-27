@@ -15,7 +15,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @Entity
-@XmlRootElement
 public class Customer implements java.io.Serializable {
 
 	@Id 

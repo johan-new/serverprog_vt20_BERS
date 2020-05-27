@@ -85,8 +85,8 @@ public class CustomerResource {
 
 	}
 
-	@GET //FIX LATER @HANDLEDNING
-	@Produces("application/XML")
+	@GET
+	@Produces("application/JSON")
 	@Path("/id/{idParameter}")
 	public Response getById(@PathParam("idParameter") int id) {
 		Customer returnCustomer;
@@ -101,8 +101,8 @@ public class CustomerResource {
 
 
 	@POST
-	@Produces("application/XML")
-	@Consumes("application/XML")
+	@Produces("application/JSON")
+	@Consumes("application/JSON")
 	public Response registerCustomer(Customer customer)  {
 		try {
 			service.registerCustomer(customer);
@@ -114,6 +114,7 @@ public class CustomerResource {
 	}
 
 	@DELETE
+	@Consumes("application/JSON")
 	@Path("{customerNo}")
 	public Response removeCustomer(@PathParam("customerNo") int id) {
 		try {
@@ -126,8 +127,8 @@ public class CustomerResource {
 
 	@PUT
 	@Path("{customerNo}")
-	@Produces({ "application/XML" })
-	@Consumes({ "application/XML" })
+	@Produces({ "application/JSON" })
+	@Consumes({ "application/JSON" })
 	public Response updateCustomer(@PathParam("customerNo") int id, Customer c) {
 		try {
 			service.updateCustomer(id, c.getPhone(), c.getAddress(), c.getCustomergroup(), c.getEmail(),
