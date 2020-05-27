@@ -15,10 +15,10 @@ public class TestClient {
 		Client client = ClientBuilder.newClient();
 		Response response;
 
-		/*
+/*
 
 		// DELETE
-		Response response = client.target("http://localhost:8080/CustomerManagement/webservice/customers/1").request()
+		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers/302").request()
 				.buildDelete().invoke();
 		System.out.println("Delete status was " + response.getStatus());
 		response.close();
@@ -50,7 +50,7 @@ public class TestClient {
 
 		// GET ALL CUSTOMERS
 
-		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers").request("application/XML").buildGet().invoke();
+		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers").request("application/JSON").buildGet().invoke();
 		List<Customer> searchHits = response.readEntity(new GenericType<List<Customer>>() {});
 		for (Customer c : searchHits) {
 			System.out.println(c);
