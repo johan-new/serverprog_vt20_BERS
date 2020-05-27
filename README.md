@@ -59,28 +59,6 @@ Run build.xml in your IDE, or right click on ServerManangementApplication and ex
 Open the browser and insert http://127.0.0.1:8080/CustomerManagement/webservice/customers 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Built With
 
 * IDE Eclipse 
