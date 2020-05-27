@@ -8,12 +8,48 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Link;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import dao.CannotReadDatabaseException;
 import dao.CustomerNotFoundException;
 import domain.Customer;
 import service.CustomerManagementServiceLocal;
 import service.ServiceUnavailableException;
+
+/**
+ * <h2>REST API Resource class</h2> </ br>
+ * Handling endpoints </ br>
+ * <p>
+ * <h3>GET</h3>
+ * <li>
+ *     <ul>"/" - gets all customers</ul>
+ *     <ul>"/AnyGivenSurname - gets all customers with matching surname "AnyGivenSurname"</ul>
+ *     <ul>"/id/7 - get customer with id 7<</ul>
+ * </li>
+ * </p>
+ * <p>
+ * <h3>POST</h3>
+ * <li>
+ *     <ul>"/" - registers a customer</ul>
+ * </li>
+ * </p>
+ * <p>
+ * <h3>DELETE</h3>
+ * <li>
+ *     <ul>"/" - deletes a customer</ul>
+ * </li>
+ * </p>
+ * <p>
+ * <h3>PUT</h3>
+ * <li>
+ *     <ul>"/" - alters a customers data (NOT NAME)</ul>
+ * </li>
+ * </p>
+ *
+ * @version 1.0
+ * @author Erik Manfredsson, Simon Södergren, Johan Nyberg
+ */
 
 @Stateless
 @Path("/customers")
@@ -23,16 +59,29 @@ public class CustomerResource {
 	private CustomerManagementServiceLocal service;
 
 	@GET
-	@Produces("application/XML")
-	public List<Customer> getAllCustomers() {
-		return service.getAllCustomers();
+	@Produces(MediaType.APPLICATION_XML)
+	public Response getAllCustomers() {
+		try {
+			//List<Customer> customers = service.getAllCustomers();
+			return Response.ok(service.getAllCustomers()).build();
+		} catch (CannotReadDatabaseException e) {
+			e.printStackTrace();
+			return Response.status(404).build();
+		}
 	}
 
 	@GET
 	@Produces("application/XML")
 	@Path("{customerSurname}")
-	public List<Customer> searchBySurname(@PathParam("customerSurname") String surname) {
-		return service.searchBySurname(surname);
+	public Response searchBySurname(@PathParam("customerSurname") String surname) {
+		try {
+			List<Customer> searchHits = service.searchBySurname(surname);
+			return Response.ok(searchHits).build();
+		} catch (CannotReadDatabaseException e) {
+			e.printStackTrace();
+			return Response.status(404).build();
+		}
+
 
 	}
 
@@ -43,30 +92,13 @@ public class CustomerResource {
 		Customer returnCustomer;
 		try {
 			returnCustomer = service.identifyCustomer(id);
-			Link directURI = Link.fromUri("/customers/" + id).rel("self").type("get").build();
-
-			//return Response(returnCustomer).links(directURI).build();
-			return Response.status(200).build(); //OK code created
+			return Response.ok(returnCustomer).build();
 		} catch (CustomerNotFoundException e) {
 			e.printStackTrace();
 			return Response.status(404).build(); //Not found code created
 		}
 	}
-	
-	@GET
-	@Produces("application/XML")
-	@Path("{customerNo}")
-	public Response findCustomerById(@PathParam("customerNo") int id) {	
-		try {
-			Customer result = service.identifyCustomer(id);
-			Link selfLink= Link.fromUri("/customers/" + id).rel("self").type("get").build();
-			Link updateLink= Link.fromUri("/customers/" + id).rel("update").type("put").build();
-			Link deleteLink= Link.fromUri("/customers/" + id).rel("delete").type("delete").build();
-			return Response.ok(result).links(selfLink,updateLink,deleteLink).build();
-		}catch (CustomerNotFoundException e) {
-			return Response.status(404).build();
-	     }
-	} 
+
 
 	@POST
 	@Produces("application/XML")

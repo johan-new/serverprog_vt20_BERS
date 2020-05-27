@@ -7,6 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * <h2>Customer class</h2>
+ * <p> Basic Customer entity </p>
+ * @version 1.0
+ * @author Erik Manfredsson, Simon Södergren, Johan Nyberg
+ */
+
 @Entity
 @XmlRootElement
 public class Customer implements java.io.Serializable {

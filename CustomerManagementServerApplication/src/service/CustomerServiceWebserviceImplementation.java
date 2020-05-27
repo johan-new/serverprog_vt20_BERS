@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jws.WebService;
 
+import dao.CannotReadDatabaseException;
 import dao.CustomerNotFoundException;
 import domain.Customer;
 
@@ -16,7 +17,7 @@ public class CustomerServiceWebserviceImplementation {
 	@Inject
 	private CustomerManagementServiceLocal service;
 
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers() throws CannotReadDatabaseException {
 		return service.getAllCustomers();
 	}
 
@@ -32,7 +33,7 @@ public class CustomerServiceWebserviceImplementation {
 		service.removeCustomer(id);
 	}
 
-	public List<Customer> searchBySurname(String surname) {
+	public List<Customer> searchBySurname(String surname) throws CannotReadDatabaseException {
 		return service.searchBySurname(surname);
 	}
 

@@ -37,7 +37,7 @@ public class TestClient {
 
 
 		// LÄGGA TILL
-
+/*
 		Customer exampleCustomer = new Customer("Luggis","Bytenstein","08-585888",
 								"Stigen 1, Stockholm","After sales","gugge@lindab.com",
 					"Bubbe");
@@ -45,21 +45,19 @@ public class TestClient {
 		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers").request().buildPost(customerEntity).invoke();
 		System.out.println(response.getHeaders().toString());
 		System.out.println("Status code" + response.getStatus());
-		response.close();
+		response.close();*/
 
 
 		// GET ALL CUSTOMERS
-		/**
-		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers").request()
-				.buildGet().invoke();
-		List<Customer> searchHits = response.readEntity(new GenericType<List<Customer>>() {
-		});
+
+		response = client.target("http://localhost:8080/CustomerManagement/webservice/customers").request("application/XML").buildGet().invoke();
+		List<Customer> searchHits = response.readEntity(new GenericType<List<Customer>>() {});
 		for (Customer c : searchHits) {
 			System.out.println(c);
 		}
 		System.out.println(response.getHeaders().toString());
 		System.out.println("Status code" + response.getStatus());
-		response.close();**/
+		response.close();
 
 	}
 

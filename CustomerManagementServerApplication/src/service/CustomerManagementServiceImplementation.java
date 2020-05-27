@@ -1,6 +1,8 @@
 package service;
 
 import java.util.List;
+
+import dao.CannotReadDatabaseException;
 import dao.CustomerDataAccess;
 import dao.CustomerNotFoundException;
 import dao.CustomerNotCreatedException;
@@ -18,12 +20,12 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     
  // ADD RETURN STATEMENT, BE�HVER VI DET????
     @Override
-    public List<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomers() throws CannotReadDatabaseException {
         return dao.findAll();
     }
 
     @Override
-    public List<Customer> searchBySurname(String surname) {
+    public List<Customer> searchBySurname(String surname) throws CannotReadDatabaseException {
         return dao.find(surname);
     }
 
@@ -48,7 +50,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
     }
 
     @Override //    NEW COMPARING IMPLEMENTATION AT CUSTOMER OBJECT MIGHT BE REQUIRED
-    public int identifyCustomer(Customer customer) throws CustomerNotFoundException {
+    public int identifyCustomer(Customer customer) throws CustomerNotFoundException, CannotReadDatabaseException {
 
         List<Customer> allCustomers = getAllCustomers();
 
@@ -56,7 +58,7 @@ public class CustomerManagementServiceImplementation implements CustomerManageme
             if (customer.equals(c))      {
                 return c.getId();
             }      else {
-                throw new CustomerNotFoundException();
+                throw new CustomerNotFoundException("CustomerNotFoundException identifyCustomer(customer) @ DAO ");
             }
         }
 

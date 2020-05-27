@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 
 @Stateless
+//@Alternative
 @TestingDao
 public class CustomerDataAccessTesting implements CustomerDataAccess {
 	
@@ -21,30 +23,34 @@ public class CustomerDataAccessTesting implements CustomerDataAccess {
 		Customer c1 = new Customer("Erik", "Manfredssono", "0712582225", "Vasagatan 23", "bla", "erik@mail.com", "blabla" );
 		Customer c2 = new Customer("Johan", "Manfredssono", "0712582725", "Vasagatan 2", "bla", "johan@mail.com", "blabla" );
 		Customer c3 = new Customer("Simon", "Manfredssono", "0712582425", "Vasagatan 44", "bla", "simon@mail.com", "blabla" );
-		List<Customer> customer = new ArrayList<Customer>();
-		customer.add(c1);
-		customer.add(c2); 
-		customer.add(c3); 
-		return null;
+		List<Customer> customers = new ArrayList<Customer>();
+		customers.add(c1);
+		customers.add(c2);
+		customers.add(c3);
+		return customers;
 	}
+
 	@Override
 	public List<Customer> find(String surname) {
-		return null; 
+		Customer c = new Customer("Simon", "Manfredssono", "0712582425", "Vasagatan 44", "bla", "simon@mail.com", "blabla" );
+		List<Customer> customers = new ArrayList<Customer>();
+		customers.add(c);
+		return customers;
 	}
 
 	@Override
 	public void remove(int id) {
-		// TODO Auto-generated method stub
+		System.out.println("TESTING DAO: REMOVE CUSTOMER #" + id);
 	}
 
 	@Override
 	public void updateCustomer(int id, String newPhone, String newAddress, String newCustomergroup, String newEmail, String newAccountmanager) {
-
+		System.out.println("TESTING DAO: UPDATE CUSTOMER #" + id);
 	}
 
 	@Override
 	public Customer getById(int id) {
-		return null;
+		return new Customer("Simon", "Manfredssono", "0712582425", "Vasagatan 44", "bla", "simon@mail.com", "blabla" );
 	}
 
 

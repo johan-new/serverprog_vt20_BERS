@@ -6,6 +6,13 @@ import domain.Customer;
 
 import java.util.List;
 
+/**
+ * <h2>CustomerDataAccess Interfaced</h2>
+ * <p> Layer handling  database CRUD operations</p>
+ * @version 1.0
+ * @author Erik Manfredsson, Simon Södergren, Johan Nyberg
+ */
+
 @Local
 public interface CustomerDataAccess {
     List<Customer> findAll() throws CannotReadDatabaseException;
